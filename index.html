@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pesan Makanan</title>
+    <!-- Link ke file CSS Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center mt-5">FORM PESAN<br />MAKANAN & MINUMAN</h1>
+      <br />
+      <form>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4"><h5>MAKANAN</h5></div>
+            <div class="col-md-4"><h6>JUMLAH PESANAN</h6></div>
+            <div class="col-md-4"><h6>HARGA</h6></div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <select class="form-control" id="Makanan">
+                <option value="">-- Pilih Makanan --</option>
+                <option value="10000">Bakso</option>
+                <option value="11000">Mie Ayam</option>
+                <option value="15000">Nasi Goreng</option>
+                <option value="16000">Soto Daging</option>
+              </select>
+            </div>
+            <div class="col-md-4"><input type="number" id="banyak_makan" placeholder="Banyaknya Makanan" /></div>
+            <div class="col-md-4"><label id="harga_makanan"></label></div>
+          </div>
+          <div class="row">
+            <div class="col-md-4"><h5>MINUMAN</h5></div>
+            <div class="col-md-4"><h6>JUMLAH PESANAN</h6></div>
+            <div class="col-md-4"><h6>HARGA</h6></div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <select class="form-control" id="Minuman">
+                <option value="">-- Pilih Minuman --</option>
+                <option value="3000">Es Teh</option>
+                <option value="4000">Es Jeruk</option>
+                <option value="5000">Es Nutrisari</option>
+                <option value="6000">Teh Poci</option>
+              </select>
+            </div>
+            <div class="col-md-4"><input type="number" id="banyak_minum" value="" placeholder="Banyaknya Minuman" /></div>
+            <div class="col-md-4"><label id="harga_minuman"></label></div>
+          </div>
+          <div class="row">
+            <div class="col-md-8"><button type="submit" class="btn btn-primary" id="hitung">Hitung</button></div>
+            <div class="col-md-4"><label id="Total_harga"></label></div>
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+              <h5>BAYAR</h5>
+            </div>
+            <div class="col-md-4"><input type="number" id="Bayar" placeholder="Masukkan Uang" value="" /></div>
+          </div>
+        </div>
+      </form>
+      <script>
+        let makan = document.getElementById('Makanan');
+        let banyak_makan = document.getElementById('banyak_makan');
+        let harga_makanan = document.getElementById('harga_makanan');
+        banyak_makan.addEventListener('change', function () {
+          harga_makanan.innerHTML = banyak_makan.value * makan.value;
+        });
+        let minum = document.getElementById('Minuman');
+        let harga_minuman = document.getElementById('harga_minuman');
+        let banyak_minum = document.getElementById('banyak_minum');
+        banyak_minum.addEventListener('change', function () {
+          harga_minuman.innerHTML = minum.value * banyak_minum.value;
+        });
+        let hitung = [minum.value * banyak_minum.value + makan.value * banyak_makan.value];
+        document.getElementById('Total_harga').innerHTML = hitung.value;
+      </script>
+    </div>
+
+    <!-- Link ke file JavaScript Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min"></script>
+  </body>
+</html>
+<!--Menghitung fungsi total-->
