@@ -5,25 +5,26 @@ const namaMinuman = document.getElementById('namaMinuman');
 const hargaMinuman = document.getElementById('hargaMinuman');
 const jumlahMakanan = document.getElementById('jumlahMakanan');
 const jumlahMinuman = document.getElementById('jumlahMinuman');
-const totalHarga = document.getElementById('totalHarga');
-const bayar = document.getElementById('bayar');
-const kembalian = document.getElementById('kembalian');
+// const totalHarga = document.getElementById('totalHarga');
+// const bayar = document.getElementById('bayar');
+// const kembalian = document.getElementById('kembalian');
+// const ppn = document.getElementById("ppn");
 
 // Harga makanan dan minuman
 const hargaMakananList = {
-  bakso: 15000,
-  mieAyam: 12000,
-  nasiPecel: 10000,
-  sotoAyam: 13000,
-  bebekGoreng: 20000,
+  nasigoreng: 15000,
+  ayamgeprek: 13000,
+  sotoayam: 17000,
+  bakso: 13000,
+  mieayam: 13000,
 };
 
 const hargaMinumanList = {
-  tehManis: 3000,
-  arabicaCoffee: 8000,
-  milk: 5000,
-  cappucinoCoffee: 10000,
-  airMineral: 2000,
+  esteh: 4000,
+  esjeruk: 5000,
+  escampur: 8000,
+  esssinom: 5000,
+  airMineral: 4000,
 };
 
 // Menampilkan harga makanan saat dipilih
@@ -34,7 +35,8 @@ namaMakanan.addEventListener('change', function () {
   } else {
     hargaMakanan.innerHTML = '<h5>Rp. 0</h5>';
   }
-  hitungTotalHarga();
+
+  // hitungTotalHarga();
 });
 
 // Menampilkan harga minuman saat dipilih
@@ -45,32 +47,42 @@ namaMinuman.addEventListener('change', function () {
   } else {
     hargaMinuman.innerHTML = '<h5>Rp. 0</h5>';
   }
-  hitungTotalHarga();
+
+  // hitungTotalHarga();
 });
 
-// Menghitung total harga
-function hitungTotalHarga() {
-  const hargaMakananValue = hargaMakanan.innerText.replace('Rp. ', '');
-  const hargaMinumanValue = hargaMinuman.innerText.replace('Rp. ', '');
-  const jumlahMakananValue = parseInt(jumlahMakanan.value);
-  const jumlahMinumanValue = parseInt(jumlahMinuman.value);
-  const total = hargaMakananValue * jumlahMakananValue + hargaMinumanValue * jumlahMinumanValue;
-  totalHarga.innerHTML = '<span class="text-center" id="totalHarga">Total Harga : Rp. ' + total + '</span>';
+// // Menghitung total harga
+// function hitungTotalHarga() {
+//   const hargaMakananValue = hargaMakanan.innerText.replace('Rp. ', '');
+//   const hargaMinumanValue = hargaMinuman.innerText.replace('Rp. ', '');
+//   const jumlahMakananValue = parseInt(jumlahMakanan.value);
+//   const jumlahMinumanValue = parseInt(jumlahMinuman.value);
+//   const total = (hargaMakananValue * jumlahMakananValue) + (hargaMinumanValue * jumlahMinumanValue);
+//   const totalPPN = total * 0.11;
+//   const totalAkhir = total + totalPPN;
 
-  if (bayar.value != 0) {
-    hitungKembalian(total);
-  }
-}
+//   // totalHarga.innerHTML = 'Total Harga : Rp. ' + total;
+//   // ppn.innerHTML = 'PPN (11%) : Rp. ' + totalPPN;
+//   // document.getElementById('totalAkhir').innerHTML = 'Total Akhir : Rp. ' + totalAkhir;
 
-// Menghitung kembalian
-function hitungKembalian(total) {
-  const bayarValue = parseInt(bayar.value);
-  const kembalianValue = bayarValue - total;
-  kembalian.innerHTML = '<h5> Rp. ' + kembalianValue + '</h5>';
-}
+//   hitungKembalian(totalAkhir);
+// }
 
-// Ketika tombol submit ditekan
-document.querySelector('form').addEventListener('submit', function (event) {
-  event.preventDefault();
-  hitungTotalHarga();
+// // Menghitung kembalian
+// function hitungKembalian(total) {
+//   const bayarValue = parseInt(bayar.value);
+//   const kembalianValue = bayarValue - total;
+
+//   if (isNaN(bayarValue)) {
+//   kembalian.innerHTML = '<h5> Rp. 0</h5>';
+//   return;
+//   }
+
+//   kembalian.innerHTML = '<h5> Rp. ' + kembalianValue + '</h5>';
+// }
+
+// Mengembalikan nilai hargaMakanan dan hargaMinuman ke harga awal saat halaman dimuat ulang
+window.addEventListener('load', function () {
+  hargaMakanan.innerHTML = '<h5>Rp. 0</h5>';
+  hargaMinuman.innerHTML = '<h5>Rp. 0</h5>';
 });
